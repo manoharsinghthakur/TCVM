@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.java.TCVM.controller.ContainerInitializer;
+import com.java.TCVM.controller.TCVMMenu;
 import com.java.TCVM.data.Container;
 import com.java.TCVM.data.Product;
 import com.java.TCVM.service.DrinkAvailability;
@@ -42,8 +43,10 @@ public class MakeBlackTea implements MakeDrink {
 		UpdateQuantity(quantity, teaAvailableQuantity, waterAvailableQuantity, sugarAvailableQuantity);
 		productRecord.AddProductInList(new Product("black tea",quantity,quantity*BLACK_TEA_PRICE));
 		wasteproductRecord.AddWasteProductInList(new Container( WASTE_TEA*quantity,0, WASTE_SUGAR*quantity, WASTE_WATER*quantity,0));
-
+		System.out.println("Your Bill is..");
 		System.out.println(quantity+" cup blak tea "+ quantity+"*"+BLACK_TEA_PRICE+" = "+quantity*BLACK_TEA_PRICE);
+		System.out.println("Black tea is ready\n");
+		new TCVMMenu().showMenu();
 		}
 	}
 	public static void UpdateQuantity(int quantity, int teaAvailableQuantity, int waterAvailableQuantity, int sugarAvailableQuantity) throws IOException{

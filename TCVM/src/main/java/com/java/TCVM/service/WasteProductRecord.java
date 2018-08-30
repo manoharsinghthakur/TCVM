@@ -11,6 +11,7 @@ public class WasteProductRecord {
 		wasteProductList.add(product);
 	}
 	
+	
 	public List<Container> getWasteProductList(){
 		return wasteProductList;
 	}

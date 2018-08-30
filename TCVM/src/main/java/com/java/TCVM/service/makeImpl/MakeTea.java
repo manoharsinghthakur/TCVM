@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.java.TCVM.controller.ContainerInitializer;
+import com.java.TCVM.controller.TCVMMenu;
 import com.java.TCVM.data.Container;
 import com.java.TCVM.data.Product;
 import com.java.TCVM.service.DrinkAvailability;
@@ -24,11 +25,23 @@ public class MakeTea implements MakeDrink {
 	final static int WASTE_MILK = 4;
 	final static int WASTE_SUGAR = 2;
 	
-	static ContainerInitializer containerInitializer = new ContainerInitializer();
-	private ProductRecord productRecord = new ProductRecord();
-	private WasteProductRecord wasteproductRecord = new WasteProductRecord();
-	private DrinkAvailability drinkAvailability = new TeaAvailability();
+	public ContainerInitializer containerInitializer;// = new ContainerInitializer();
+	public ProductRecord productRecord;// = new ProductRecord();
+ 	public WasteProductRecord wasteproductRecord;// = new WasteProductRecord();
+	public DrinkAvailability drinkAvailability;// = new TeaAvailability();
 	
+	public MakeTea() {
+		
+	}
+	
+	public MakeTea(ContainerInitializer containerInitializer, ProductRecord productRecord,
+			WasteProductRecord wasteproductRecord, DrinkAvailability drinkAvailability) {
+		super();
+		this.containerInitializer = containerInitializer;
+		this.productRecord = productRecord;
+		this.wasteproductRecord = wasteproductRecord;
+		this.drinkAvailability = drinkAvailability;
+	}
 	@Override
 	public void makingDrink(int quantity) throws IOException {
 		
@@ -36,17 +49,18 @@ public class MakeTea implements MakeDrink {
 			throw new RuntimeException("No Enough Material Available");
 		}
 		else{
-			System.out.println("tea is ready");
 			int teaAvailableQuantity = containerInitializer.getContainerInstance().getTeaContainer();
-			int waterAvailableQuantity = containerInitializer.getContainerInstance().getWaterContainer();
+	 		int waterAvailableQuantity = containerInitializer.getContainerInstance().getWaterContainer();
 			int milkAvailableQuantity = containerInitializer.getContainerInstance().getMilkContainer();
 			int sugarAvailableQuantity = containerInitializer.getContainerInstance().getSugerContaier();
-		
-			UpdateQuantity(quantity, teaAvailableQuantity, waterAvailableQuantity, milkAvailableQuantity, sugarAvailableQuantity);
+		 
+			UpdateQuantity( quantity, teaAvailableQuantity, waterAvailableQuantity, milkAvailableQuantity, sugarAvailableQuantity);
 			productRecord.AddProductInList(new Product("tea",quantity,quantity*TEA_PRICE));
 			wasteproductRecord.AddWasteProductInList(new Container(WASTE_TEA*quantity, 0, WASTE_SUGAR*quantity, WASTE_WATER*quantity, WASTE_MILK*quantity));
-		
+			System.out.println("Your bill is..");
 			System.out.println(quantity+" cup tea "+ quantity+"*"+TEA_PRICE+" = "+quantity*TEA_PRICE);
+			System.out.println("tea is ready\n");
+			
 			}
 		}
 	public void UpdateQuantity(int quantity, int teaAvailableQuantity, int waterAvailableQuantity, int milkAvailableQuantity, int sugarAvailableQuantity) throws IOException{

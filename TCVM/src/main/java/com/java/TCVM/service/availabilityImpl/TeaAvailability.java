@@ -6,7 +6,7 @@ import com.java.TCVM.controller.ContainerInitializer;
 import com.java.TCVM.service.DrinkAvailability;
 
 public class TeaAvailability implements DrinkAvailability {
-	final int TEA = 5;
+ 	final int TEA = 5;
 	final int WATER = 60;
 	final int MILK = 40;
 	final int SUGAR = 15;
