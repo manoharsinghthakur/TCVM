@@ -9,7 +9,6 @@ import com.java.TCVM.service.makeImpl.MakeTea;
 public class TCVMController {
 	public static void main(String[] args) throws IOException {
 		new ContainerInitializer().getContainerInstance();
-		//new TCVMMenu().showMenu();
-		new TCVMMenu(new InputScanner(),new MakeTea()).showMenu();;
+		new TCVMMenu().showMenu();;
 	}
 }

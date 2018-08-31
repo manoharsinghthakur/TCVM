@@ -7,7 +7,7 @@ import com.java.TCVM.controller.TCVMMenu;
 import com.java.TCVM.data.Container;
 
 public class ResetContainer {
-	public void resetingContainer() throws IOException{
+	public boolean resetingContainer() throws IOException{
 		Container container = new ContainerInitializer().getContainerInstance();
 		container.setTeaContainer(2000);
 		container.setCoffeeContainer(2000);
@@ -15,6 +15,6 @@ public class ResetContainer {
 		container.setWaterContainer(15000);
 		container.setMilkContainer(10000);
 		System.out.println("container is reset");
-		new TCVMMenu().showMenu();
+		return true;
 	}
 }

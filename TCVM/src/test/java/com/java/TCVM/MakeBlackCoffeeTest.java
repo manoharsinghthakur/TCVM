@@ -1,9 +1,5 @@
 package com.java.TCVM;
 
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-
 import java.io.IOException;
 
 import org.junit.Test;
@@ -12,19 +8,21 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 import com.java.TCVM.controller.ContainerInitializer;
 import com.java.TCVM.data.Container;
-import com.java.TCVM.data.Product;
 import com.java.TCVM.service.ProductRecord;
 import com.java.TCVM.service.WasteProductRecord;
-import com.java.TCVM.service.makeImpl.MakeTea;
+import com.java.TCVM.service.makeImpl.MakeBlackCoffee;
+import com.java.TCVM.service.makeImpl.MakeCoffee;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MakeTeaTest {
+public class MakeBlackCoffeeTest {
 	
 	@InjectMocks
-	private MakeTea makeTea;
+	private MakeBlackCoffee makeBlackCoffee;
 	
 	@Mock
 	private ContainerInitializer containerInitializer;
@@ -37,13 +35,13 @@ public class MakeTeaTest {
 	
 	
 	@Test
-	public void shouldSystemSupportToMakeTea() throws IOException{
+	public void shouldSystemSupportToMakeBlackCoffee() throws IOException{
 		
 		Container container = new Container(1, 0 , 0 ,0, 0);
 		
 		when(containerInitializer.getContainerInstance()).thenReturn(container);
 		
-	 	makeTea.makingDrink(2);
+		makeBlackCoffee.makingDrink(2);
 	 	
 	 	verify(containerInitializer, Mockito.atLeast(1)).getContainerInstance();
 	

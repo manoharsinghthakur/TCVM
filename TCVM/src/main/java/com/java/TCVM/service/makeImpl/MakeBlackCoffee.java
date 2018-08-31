@@ -23,18 +23,26 @@ public class MakeBlackCoffee implements MakeDrink{
 	final static int WASTE_WATER = 12;
 	final static int WASTE_SUGAR = 2;
 	
-	static ContainerInitializer containerInitializer = new ContainerInitializer();
-	private ProductRecord productRecord = new ProductRecord();
-	private WasteProductRecord wasteproductRecord = new WasteProductRecord();
-	private DrinkAvailability drinkAvailability = new BlackCoffeeAvailability();
+	private ContainerInitializer containerInitializer;
+	private ProductRecord productRecord;
+	private WasteProductRecord wasteproductRecord;
+	
+	public MakeBlackCoffee() {
+		containerInitializer = new ContainerInitializer();
+		productRecord=new ProductRecord();
+		wasteproductRecord=new WasteProductRecord();
+}
+	public MakeBlackCoffee(ContainerInitializer containerInitializer, ProductRecord productRecord,
+			WasteProductRecord wasteproductRecord) {
+		super();
+		this.containerInitializer = containerInitializer;
+		this.productRecord = productRecord;
+		this.wasteproductRecord = wasteproductRecord;
+	}
 
 
 	@Override
 	public void makingDrink(int quantity) throws IOException {
-		if(!drinkAvailability.checkAvailabilityNeededForDrink(quantity)){
-			throw new RuntimeException("No Enough Material Available");
-		}
-		else{
 		int coffeeAvailableQuantity = containerInitializer.getContainerInstance().getCoffeeContainer();
 		int waterAvailableQuantity = containerInitializer.getContainerInstance().getWaterContainer();
 		int sugarAvailableQuantity = containerInitializer.getContainerInstance().getSugerContaier();
@@ -45,13 +53,11 @@ public class MakeBlackCoffee implements MakeDrink{
 	 	System.out.println("Your Bill is...");
 		System.out.println(quantity+" cup tea "+ quantity+"*"+BLACK_COFFEE_PRICE+" = "+quantity*BLACK_COFFEE_PRICE);
 		System.out.println("Black coffee is ready\n");
-		new TCVMMenu().showMenu();
-		}
 	}
-	public static void UpdateQuantity(int quantity, int coffeeAvailableQuantity, int waterAvailableQuantity, int sugarAvailableQuantity) throws IOException{
+	public void UpdateQuantity(int quantity, int coffeeAvailableQuantity, int waterAvailableQuantity, int sugarAvailableQuantity) throws IOException{
 		
 		int remainingCoffeeQuantity = substractQuantity(coffeeAvailableQuantity, COFFEE*quantity);
-		int remainingWaterQuantity = substractQuantity(waterAvailableQuantity,WATER*quantity);
+	 	int remainingWaterQuantity = substractQuantity(waterAvailableQuantity,WATER*quantity);
 		int remainingSugarQuantity = substractQuantity(sugarAvailableQuantity,SUGAR*quantity);
 	
 		containerInitializer.getContainerInstance().setCoffeeContainer(remainingCoffeeQuantity);
@@ -60,7 +66,7 @@ public class MakeBlackCoffee implements MakeDrink{
 	}
 	
 	public static  int substractQuantity(int availableQuantity, int usedQuantity){
-		return availableQuantity-usedQuantity;
+	 	return availableQuantity-usedQuantity;
 	}
 
 }

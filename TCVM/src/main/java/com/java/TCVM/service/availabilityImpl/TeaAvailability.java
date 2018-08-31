@@ -16,7 +16,7 @@ public class TeaAvailability implements DrinkAvailability {
 		
 		int teaQuantity = containerInitializer.getContainerInstance().getTeaContainer();
 		int waterQuantity = containerInitializer.getContainerInstance().getWaterContainer();
-		int milkQuantity = containerInitializer.getContainerInstance().getMilkContainer();
+ 		int milkQuantity = containerInitializer.getContainerInstance().getMilkContainer();
 		int sugarQuantity = containerInitializer.getContainerInstance().getSugerContaier();
 		
 		if(quantity*TEA < teaQuantity && quantity*WATER < waterQuantity && quantity*MILK < milkQuantity && quantity*SUGAR < sugarQuantity)

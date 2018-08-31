@@ -25,50 +25,48 @@ public class MakeTea implements MakeDrink {
 	final static int WASTE_MILK = 4;
 	final static int WASTE_SUGAR = 2;
 	
-	public ContainerInitializer containerInitializer;// = new ContainerInitializer();
-	public ProductRecord productRecord;// = new ProductRecord();
- 	public WasteProductRecord wasteproductRecord;// = new WasteProductRecord();
-	public DrinkAvailability drinkAvailability;// = new TeaAvailability();
+	public ContainerInitializer containerInitializer;
+	public ProductRecord productRecord;
+ 	public WasteProductRecord wasteproductRecord;
+	public DrinkAvailability drinkAvailability;
 	
 	public MakeTea() {
-		
+				containerInitializer = new ContainerInitializer();
+				productRecord=new ProductRecord();
+				wasteproductRecord=new WasteProductRecord();
 	}
 	
 	public MakeTea(ContainerInitializer containerInitializer, ProductRecord productRecord,
-			WasteProductRecord wasteproductRecord, DrinkAvailability drinkAvailability) {
+			WasteProductRecord wasteproductRecord) {
 		super();
 		this.containerInitializer = containerInitializer;
 		this.productRecord = productRecord;
 		this.wasteproductRecord = wasteproductRecord;
-		this.drinkAvailability = drinkAvailability;
 	}
+	
 	@Override
 	public void makingDrink(int quantity) throws IOException {
-		
-		if(!drinkAvailability.checkAvailabilityNeededForDrink(quantity)){
-			throw new RuntimeException("No Enough Material Available");
-		}
-		else{
+			
 			int teaAvailableQuantity = containerInitializer.getContainerInstance().getTeaContainer();
 	 		int waterAvailableQuantity = containerInitializer.getContainerInstance().getWaterContainer();
 			int milkAvailableQuantity = containerInitializer.getContainerInstance().getMilkContainer();
 			int sugarAvailableQuantity = containerInitializer.getContainerInstance().getSugerContaier();
-		 
+		  
 			UpdateQuantity( quantity, teaAvailableQuantity, waterAvailableQuantity, milkAvailableQuantity, sugarAvailableQuantity);
 			productRecord.AddProductInList(new Product("tea",quantity,quantity*TEA_PRICE));
 			wasteproductRecord.AddWasteProductInList(new Container(WASTE_TEA*quantity, 0, WASTE_SUGAR*quantity, WASTE_WATER*quantity, WASTE_MILK*quantity));
+			
 			System.out.println("Your bill is..");
 			System.out.println(quantity+" cup tea "+ quantity+"*"+TEA_PRICE+" = "+quantity*TEA_PRICE);
 			System.out.println("tea is ready\n");
-			
-			}
 		}
-	public void UpdateQuantity(int quantity, int teaAvailableQuantity, int waterAvailableQuantity, int milkAvailableQuantity, int sugarAvailableQuantity) throws IOException{
+	
+	private void UpdateQuantity(int quantity, int teaAvailableQuantity, int waterAvailableQuantity, int milkAvailableQuantity, int sugarAvailableQuantity) throws IOException{
 		
-		int remainingTeaQuantity = substractQuantity(teaAvailableQuantity, TEA*quantity);
-		int remainingWaterQuantity = substractQuantity(waterAvailableQuantity,WATER*quantity);
-		int remainingMilkQuantity = substractQuantity(milkAvailableQuantity,MILK*quantity);
-		int remainingSugarQuantity = substractQuantity(sugarAvailableQuantity,SUGAR*quantity);
+		int remainingTeaQuantity = substractQuantity(teaAvailableQuantity, TEA * quantity);
+		int remainingWaterQuantity = substractQuantity(waterAvailableQuantity, WATER * quantity);
+		int remainingMilkQuantity = substractQuantity(milkAvailableQuantity, MILK * quantity);
+		int remainingSugarQuantity = substractQuantity(sugarAvailableQuantity, SUGAR * quantity);
 	
 		containerInitializer.getContainerInstance().setTeaContainer(remainingTeaQuantity);
 		containerInitializer.getContainerInstance().setWaterContainer(remainingWaterQuantity);
@@ -76,7 +74,7 @@ public class MakeTea implements MakeDrink {
 		containerInitializer.getContainerInstance().setSugerContaier(remainingSugarQuantity);
 	}
 	
-	public  int substractQuantity(int availableQuantity, int usedQuantity){
+	private  int substractQuantity(int availableQuantity, int usedQuantity){
 		return availableQuantity-usedQuantity;
 	}
 }
