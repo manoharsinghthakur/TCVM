@@ -19,7 +19,7 @@ public class ProductRecord {
 		return list;
 	}
 	
-	public void AddProductInList(Product product){
+	public void addProductInList(Product product){
 		
 		getProductArrayList().add(product);
 	}

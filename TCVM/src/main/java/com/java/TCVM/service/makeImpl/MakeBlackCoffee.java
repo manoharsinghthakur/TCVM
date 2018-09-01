@@ -1,18 +1,13 @@
 package com.java.TCVM.service.makeImpl;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import com.java.TCVM.controller.ContainerInitializer;
-import com.java.TCVM.controller.TCVMMenu;
 import com.java.TCVM.data.Container;
 import com.java.TCVM.data.Product;
-import com.java.TCVM.service.DrinkAvailability;
 import com.java.TCVM.service.MakeDrink;
 import com.java.TCVM.service.ProductRecord;
 import com.java.TCVM.service.WasteProductRecord;
-import com.java.TCVM.service.availabilityImpl.BlackCoffeeAvailability;
-import com.java.TCVM.service.availabilityImpl.CoffeeAvailability;
 
 public class MakeBlackCoffee implements MakeDrink{
 	final static  int BLACK_COFFEE_PRICE = 10;
@@ -27,11 +22,6 @@ public class MakeBlackCoffee implements MakeDrink{
 	private ProductRecord productRecord;
 	private WasteProductRecord wasteproductRecord;
 	
-	public MakeBlackCoffee() {
-		containerInitializer = new ContainerInitializer();
-		productRecord=new ProductRecord();
-		wasteproductRecord=new WasteProductRecord();
-}
 	public MakeBlackCoffee(ContainerInitializer containerInitializer, ProductRecord productRecord,
 			WasteProductRecord wasteproductRecord) {
 		super();
@@ -48,8 +38,8 @@ public class MakeBlackCoffee implements MakeDrink{
 		int sugarAvailableQuantity = containerInitializer.getContainerInstance().getSugerContaier();
 		
 		UpdateQuantity(quantity, coffeeAvailableQuantity, waterAvailableQuantity, sugarAvailableQuantity);
-		productRecord.AddProductInList(new Product("black coffee",quantity,quantity*BLACK_COFFEE_PRICE));
-		wasteproductRecord.AddWasteProductInList(new Container( 0,WASTE_COFFEE*quantity, WASTE_SUGAR*quantity, WASTE_WATER*quantity,0));
+		productRecord.addProductInList(new Product("black coffee",quantity,quantity*BLACK_COFFEE_PRICE));
+		wasteproductRecord.addWasteProductInList(new Container( 0,WASTE_COFFEE*quantity, WASTE_SUGAR*quantity, WASTE_WATER*quantity,0));
 	 	System.out.println("Your Bill is...");
 		System.out.println(quantity+" cup tea "+ quantity+"*"+BLACK_COFFEE_PRICE+" = "+quantity*BLACK_COFFEE_PRICE);
 		System.out.println("Black coffee is ready\n");

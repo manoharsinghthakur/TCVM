@@ -6,9 +6,9 @@ import java.util.List;
 import com.java.TCVM.data.Container;
 
 public class WasteProductRecord {
-	List<Container> wasteProductList = new ArrayList();
-	public void AddWasteProductInList(Container product){
-		wasteProductList.add(product);
+	 List<Container> wasteProductList = new ArrayList();
+	public void addWasteProductInList(Container container){
+		wasteProductList.add(container);
 	}
 	
 	

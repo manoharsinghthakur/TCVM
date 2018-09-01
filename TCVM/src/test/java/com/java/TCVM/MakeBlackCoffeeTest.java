@@ -1,22 +1,21 @@
 package com.java.TCVM;
 
 import java.io.IOException;
-
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doNothing;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
 
 import com.java.TCVM.controller.ContainerInitializer;
 import com.java.TCVM.data.Container;
 import com.java.TCVM.service.ProductRecord;
 import com.java.TCVM.service.WasteProductRecord;
 import com.java.TCVM.service.makeImpl.MakeBlackCoffee;
-import com.java.TCVM.service.makeImpl.MakeCoffee;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MakeBlackCoffeeTest {

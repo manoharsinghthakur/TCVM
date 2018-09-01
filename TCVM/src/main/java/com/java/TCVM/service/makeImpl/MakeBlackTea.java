@@ -1,18 +1,14 @@
 package com.java.TCVM.service.makeImpl;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import com.java.TCVM.controller.ContainerInitializer;
-import com.java.TCVM.controller.TCVMMenu;
 import com.java.TCVM.data.Container;
 import com.java.TCVM.data.Product;
 import com.java.TCVM.service.DrinkAvailability;
 import com.java.TCVM.service.MakeDrink;
 import com.java.TCVM.service.ProductRecord;
 import com.java.TCVM.service.WasteProductRecord;
-import com.java.TCVM.service.availabilityImpl.BlackTeaAvailability;
-import com.java.TCVM.service.availabilityImpl.CoffeeAvailability;
 
 public class MakeBlackTea implements MakeDrink {
 
@@ -29,12 +25,6 @@ public class MakeBlackTea implements MakeDrink {
 	private WasteProductRecord wasteproductRecord;
 	private DrinkAvailability drinkAvailabili;
 	
-	public MakeBlackTea() {
-		containerInitializer = new ContainerInitializer();
-		productRecord=new ProductRecord();
-		wasteproductRecord=new WasteProductRecord();
-}
-	
 	public MakeBlackTea(ContainerInitializer containerInitializer, ProductRecord productRecord,
 			WasteProductRecord wasteproductRecord) {
 		super();
@@ -50,8 +40,8 @@ public class MakeBlackTea implements MakeDrink {
 		int sugarAvailableQuantity = containerInitializer.getContainerInstance().getSugerContaier();
 		
 		UpdateQuantity(quantity, teaAvailableQuantity, waterAvailableQuantity, sugarAvailableQuantity);
-		productRecord.AddProductInList(new Product("black tea",quantity,quantity*BLACK_TEA_PRICE));
-		wasteproductRecord.AddWasteProductInList(new Container( WASTE_TEA*quantity,0, WASTE_SUGAR*quantity, WASTE_WATER*quantity,0));
+		productRecord.addProductInList(new Product("black tea",quantity,quantity*BLACK_TEA_PRICE));
+		wasteproductRecord.addWasteProductInList(new Container( WASTE_TEA*quantity,0, WASTE_SUGAR*quantity, WASTE_WATER*quantity,0));
 		System.out.println("Your Bill is..");
 		System.out.println(quantity+" cup blak tea "+ quantity+"*"+BLACK_TEA_PRICE+" = "+quantity*BLACK_TEA_PRICE);
 		System.out.println("Black tea is ready\n");

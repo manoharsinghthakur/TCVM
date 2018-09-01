@@ -1,13 +1,10 @@
 package com.java.TCVM.service.makeImpl;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import com.java.TCVM.controller.ContainerInitializer;
-import com.java.TCVM.controller.TCVMMenu;
 import com.java.TCVM.data.Container;
 import com.java.TCVM.data.Product;
-import com.java.TCVM.service.DrinkAvailability;
 import com.java.TCVM.service.MakeDrink;
 import com.java.TCVM.service.ProductRecord;
 import com.java.TCVM.service.WasteProductRecord;
@@ -24,19 +21,13 @@ public class MakeCoffee implements MakeDrink {
 	final static int WASTE_MILK = 8;
 	final static int WASTE_SUGAR = 2;
 
-	private ContainerInitializer containerInitializer;
-	private ProductRecord productRecord;
-	private WasteProductRecord wasteproductRecord;
-	private CoffeeAvailability coffeeAvailability;
+	public ContainerInitializer containerInitializer;
+	public ProductRecord productRecord;
+	public WasteProductRecord wasteproductRecord;
+	public CoffeeAvailability coffeeAvailability;
 	
 	
 
-	public MakeCoffee() {
-		containerInitializer = new ContainerInitializer();
-		productRecord = new ProductRecord();
-		wasteproductRecord = new WasteProductRecord();
-		coffeeAvailability = new CoffeeAvailability();
-	}
 
 	public MakeCoffee(ContainerInitializer containerInitializer, ProductRecord productRecord,
 			WasteProductRecord wasteproductRecord) {
@@ -55,8 +46,8 @@ public class MakeCoffee implements MakeDrink {
 		int sugarAvailableQuantity = containerInitializer.getContainerInstance().getSugerContaier();
 
 		UpdateQuantity(quantity, coffeeAvailableQuantity, waterAvailableQuantity, milkAvailableQuantity,sugarAvailableQuantity);
-		productRecord.AddProductInList(new Product("coffee", quantity, quantity * COFFEE_PRICE));
-		wasteproductRecord.AddWasteProductInList(new Container(0, WASTE_COFFEE * quantity, WASTE_SUGAR * quantity,WASTE_WATER * quantity, WASTE_MILK * quantity));
+		productRecord.addProductInList(new Product("coffee", quantity, quantity * COFFEE_PRICE));
+		wasteproductRecord.addWasteProductInList(new Container(0, WASTE_COFFEE * quantity, WASTE_SUGAR * quantity,WASTE_WATER * quantity, WASTE_MILK * quantity));
 		System.out.println("Your Bill is...");
 		System.out.println(quantity + " cup tea " + quantity + "*" + COFFEE_PRICE + " = " + quantity * COFFEE_PRICE);
 		System.out.println("coffee is ready\n");

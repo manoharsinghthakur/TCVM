@@ -3,14 +3,10 @@ package com.java.TCVM.controller;
 import java.io.IOException;
 
 import com.java.TCVM.service.ContainerStatus;
-import com.java.TCVM.service.DrinkAvailability;
 import com.java.TCVM.service.InputScanner;
-import com.java.TCVM.service.MakeDrink;
-import com.java.TCVM.service.ProductRecord;
 import com.java.TCVM.service.RefillContainer;
 import com.java.TCVM.service.ResetContainer;
 import com.java.TCVM.service.TotalSale;
-import com.java.TCVM.service.WasteProductRecord;
 import com.java.TCVM.service.availabilityImpl.BlackCoffeeAvailability;
 import com.java.TCVM.service.availabilityImpl.BlackTeaAvailability;
 import com.java.TCVM.service.availabilityImpl.CoffeeAvailability;
@@ -19,7 +15,6 @@ import com.java.TCVM.service.makeImpl.MakeBlackCoffee;
 import com.java.TCVM.service.makeImpl.MakeBlackTea;
 import com.java.TCVM.service.makeImpl.MakeCoffee;
 import com.java.TCVM.service.makeImpl.MakeTea;
-
 public class TCVMMenu {
 	public InputScanner inputScanner;
 	public MakeTea makeTea;
@@ -35,22 +30,7 @@ public class TCVMMenu {
 	public ResetContainer resetContainer;
 	public TotalSale totalSale;
 
-	public TCVMMenu() {
-		teaAvailability = new TeaAvailability();
-		coffeeAvailability = new CoffeeAvailability();
-		blackTeaAvailability = new BlackTeaAvailability();
-		blackCoffeeAvailability = new BlackCoffeeAvailability();
-		refillContainer = new RefillContainer();
-		containerStatus = new ContainerStatus();
-		resetContainer = new ResetContainer();
-		totalSale = new TotalSale();
-		inputScanner = new InputScanner();
-		makeTea = new MakeTea();
-		makeCoffee = new MakeCoffee(new ContainerInitializer(), new ProductRecord(),new WasteProductRecord());
- 		makeBlackTea= new MakeBlackTea(new ContainerInitializer(), new ProductRecord(),new WasteProductRecord());
-		makeBlackCoffee = new MakeBlackCoffee(new ContainerInitializer(), new ProductRecord(),new WasteProductRecord());
-	}
-	
+
 	public TCVMMenu(InputScanner inputScanner, MakeTea makeTea, MakeCoffee makeCoffee, MakeBlackTea makeBlackTea,
 			MakeBlackCoffee makeBlackCoffee, TeaAvailability teaAvailability, CoffeeAvailability coffeeAvailability,
 			BlackTeaAvailability blackTeaAvailability, BlackCoffeeAvailability blackCoffeeAvailability,
@@ -71,6 +51,7 @@ public class TCVMMenu {
 		this.resetContainer = resetContainer;
 		this.totalSale = totalSale;
 	}
+
 
 	public int getQuantity(){
 		return inputScanner.nextInt();

@@ -1,11 +1,9 @@
 package com.java.TCVM;
 
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-
 import java.io.IOException;
-
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doNothing;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,7 +13,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.java.TCVM.controller.ContainerInitializer;
 import com.java.TCVM.data.Container;
-import com.java.TCVM.data.Product;
 import com.java.TCVM.service.ProductRecord;
 import com.java.TCVM.service.WasteProductRecord;
 import com.java.TCVM.service.makeImpl.MakeTea;

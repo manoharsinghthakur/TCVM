@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import static org.mockito.Mockito.*;
 
 import com.java.TCVM.controller.ContainerInitializer;
 import com.java.TCVM.service.DrinkAvailability;
@@ -16,8 +15,6 @@ import com.java.TCVM.service.availabilityImpl.BlackCoffeeAvailability;
 import com.java.TCVM.service.availabilityImpl.BlackTeaAvailability;
 import com.java.TCVM.service.availabilityImpl.CoffeeAvailability;
 import com.java.TCVM.service.availabilityImpl.TeaAvailability;
-import com.java.TCVM.service.makeImpl.MakeTea;;
-
 
 @RunWith(MockitoJUnitRunner.class)
 public class TCVMTest {
