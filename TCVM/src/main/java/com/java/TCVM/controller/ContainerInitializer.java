@@ -7,6 +7,7 @@ import java.util.Map;
 import com.java.TCVM.data.Container;
 
 public class ContainerInitializer {
+	
 	private static Container containerInstance;
 	
 	public Container getContainerInstance() throws IOException {
@@ -18,8 +19,8 @@ public class ContainerInitializer {
 		return containerInstance;
 	}
 
-	public Map createContainerData() {
-		Map<String, Integer> containerData = new HashMap();
+	public Map<String, Integer> createContainerData() {
+		Map<String, Integer> containerData = new HashMap<String, Integer>();
 		containerData.put("teaContainer", 2000);
 		containerData.put("coffeeContainer", 2000);
 		containerData.put("sugerContaier", 8000);

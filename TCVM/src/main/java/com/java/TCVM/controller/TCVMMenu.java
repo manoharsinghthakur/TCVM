@@ -15,20 +15,22 @@ import com.java.TCVM.service.makeImpl.MakeBlackCoffee;
 import com.java.TCVM.service.makeImpl.MakeBlackTea;
 import com.java.TCVM.service.makeImpl.MakeCoffee;
 import com.java.TCVM.service.makeImpl.MakeTea;
+
 public class TCVMMenu {
-	public InputScanner inputScanner;
-	public MakeTea makeTea;
-	public MakeCoffee makeCoffee;
-	public MakeBlackTea makeBlackTea;
-	public MakeBlackCoffee makeBlackCoffee;
-	public TeaAvailability teaAvailability;
-	public CoffeeAvailability coffeeAvailability;
-	public BlackTeaAvailability blackTeaAvailability;
-	public BlackCoffeeAvailability blackCoffeeAvailability;
-	public RefillContainer refillContainer;
-	public ContainerStatus containerStatus;
-	public ResetContainer resetContainer;
-	public TotalSale totalSale;
+	
+	private InputScanner inputScanner;
+	private MakeTea makeTea;
+	private MakeCoffee makeCoffee;
+	private MakeBlackTea makeBlackTea;
+	private MakeBlackCoffee makeBlackCoffee;
+	private TeaAvailability teaAvailability;
+	private CoffeeAvailability coffeeAvailability;
+	private BlackTeaAvailability blackTeaAvailability;
+	private BlackCoffeeAvailability blackCoffeeAvailability;
+	private RefillContainer refillContainer;
+	private ContainerStatus containerStatus;
+	private ResetContainer resetContainer;
+	private TotalSale totalSale;
 
 
 	public TCVMMenu(InputScanner inputScanner, MakeTea makeTea, MakeCoffee makeCoffee, MakeBlackTea makeBlackTea,
@@ -57,6 +59,12 @@ public class TCVMMenu {
 		return inputScanner.nextInt();
 	}
 	
+	
+	private void viewMenu() throws IOException{
+		if(getQuantity()==0)
+			showMenu();
+	}
+	
 	public void showMenu() throws IOException{
 		
 		System.out.println("WELCOME TO TEA COFFEE VENDING MACHINE....");
@@ -73,14 +81,12 @@ public class TCVMMenu {
 			if(!teaAvailability.checkAvailabilityNeededForDrink(quantity1)){
 				System.out.println("NO ENOUGH MATERIAL AVAILABLE..");
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 			}
 			else{
 				makeTea.makingDrink(quantity1);
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 				}
 			break;
 		
@@ -91,14 +97,12 @@ public class TCVMMenu {
 			if(!coffeeAvailability.checkAvailabilityNeededForDrink(quantity2)){
 				System.out.println("NO ENOUGH MATERIAL AVAILABLE..");
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 	 		}
 			else{
 				makeCoffee.makingDrink(quantity2);
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 				}
 			break;			
 		case 3:
@@ -108,14 +112,12 @@ public class TCVMMenu {
 			if(!blackTeaAvailability.checkAvailabilityNeededForDrink(quantity3)){
 				System.out.println("NO ENOUGH MATERIAL AVAILABLE..");
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 			}
 			else{
 				makeBlackTea.makingDrink(quantity3);
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 				}
 			break;
 		case 4:
@@ -125,14 +127,12 @@ public class TCVMMenu {
 			if(!blackCoffeeAvailability.checkAvailabilityNeededForDrink(quantity4)){
 				System.out.println("NO ENOUGH MATERIAL AVAILABLE..");
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 			}
 			else{
 				makeBlackCoffee.makingDrink(quantity4);
 				System.out.println("Press 0 for main menu");
-				if(getQuantity()==0)
-					showMenu();
+				viewMenu();
 				}
 			break;	
 			
@@ -141,31 +141,27 @@ public class TCVMMenu {
 			System.out.println("Enter 1 for Tea, 2 for coffee, 3 for sugar, 4 for water , 5 for milk & press any key for main menu");
 			refillContainer.refillContainer(getQuantity());
 			System.out.println("Press 0 for main menu");
-			if(getQuantity()==0)
-				showMenu();
+			viewMenu();
 			break;	
 		
 		case 6:
 			System.out.println("product total sale .....");
 			totalSale.productTotalSale();	
 			System.out.println("Press 0 for main menu");
-			if(getQuantity()==0)
-				showMenu();
+			viewMenu();
 			break;
 		
 		case 7:
 			System.out.println("container status");
 			containerStatus.showContainerStatus();
 			System.out.println("Press 0 for main menu");
-			if(getQuantity()==0)
-				showMenu();
+			viewMenu();
 			break;	
 			
 		case 8:
 			resetContainer.resetingContainer();
 			System.out.println("Press 0 for main menu");
-			if(getQuantity()==0)
-				showMenu();
+			viewMenu();
 			break;
 			
 		default:
