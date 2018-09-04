@@ -1,4 +1,4 @@
-package com.java.TCVM.service;
+package com.java.TCVM.controller;
 import java.util.Scanner;
 
 public class InputScanner {

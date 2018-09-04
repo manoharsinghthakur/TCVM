@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.java.TCVM.service.InputScanner;
+import com.java.TCVM.controller.InputScanner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class InputScannerTest {

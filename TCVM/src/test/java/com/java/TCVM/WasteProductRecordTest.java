@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.java.TCVM.data.Container;
-import com.java.TCVM.service.WasteProductRecord;
+import com.java.TCVM.data.WasteProductRecord;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WasteProductRecordTest {

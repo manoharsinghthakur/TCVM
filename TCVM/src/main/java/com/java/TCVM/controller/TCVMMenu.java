@@ -3,7 +3,6 @@ package com.java.TCVM.controller;
 import java.io.IOException;
 
 import com.java.TCVM.service.ContainerStatus;
-import com.java.TCVM.service.InputScanner;
 import com.java.TCVM.service.RefillContainer;
 import com.java.TCVM.service.ResetContainer;
 import com.java.TCVM.service.TotalSale;
@@ -60,7 +59,7 @@ public class TCVMMenu {
 	}
 	
 	
-	private void viewMenu() throws IOException{
+	public void viewMenu() throws IOException{
 		if(getQuantity()==0)
 			showMenu();
 	}
@@ -77,11 +76,11 @@ public class TCVMMenu {
 		case 1:
 			System.out.println("You are selecting Tea");
 			System.out.println("Please Enter Quantity");
-			Integer quantity1= inputScanner.nextInt();//getQuantity();
+			Integer quantity1= inputScanner.nextInt();
 			if(!teaAvailability.checkAvailabilityNeededForDrink(quantity1)){
 				System.out.println("NO ENOUGH MATERIAL AVAILABLE..");
 				System.out.println("Press 0 for main menu");
-				viewMenu();
+				viewMenu();          
 			}
 			else{
 				makeTea.makingDrink(quantity1);
@@ -166,7 +165,7 @@ public class TCVMMenu {
 			
 		default:
 			System.out.println("exit from TCVM");
-			System.exit(0);
+			//throw new RuntimeException("Wrong Input you are exiting from TCVM");
 		}		
 	}
 }

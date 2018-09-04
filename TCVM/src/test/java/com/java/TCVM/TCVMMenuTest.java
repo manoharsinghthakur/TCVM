@@ -13,9 +13,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.java.TCVM.controller.InputScanner;
 import com.java.TCVM.controller.TCVMMenu;
 import com.java.TCVM.service.ContainerStatus;
-import com.java.TCVM.service.InputScanner;
 import com.java.TCVM.service.RefillContainer;
 import com.java.TCVM.service.ResetContainer;
 import com.java.TCVM.service.TotalSale;
@@ -192,5 +192,10 @@ public class TCVMMenuTest {
 		Mockito.when(resetContainer.resetingContainer()).thenReturn(true);
 		tcvmMenu.showMenu();
 		Mockito.verify(resetContainer).resetingContainer();
+	}
+	
+	@Test
+	public void shouldCheckviewMenuMethod() throws IOException{
+		tcvmMenu.viewMenu();
 	}
 }

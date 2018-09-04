@@ -3,6 +3,8 @@ package com.java.TCVM.service;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import com.java.TCVM.data.ProductRecord;
+
 public class TotalSale {
 	
 		 ProductRecord productRecord;

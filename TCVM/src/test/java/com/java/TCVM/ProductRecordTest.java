@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.java.TCVM.data.Product;
-import com.java.TCVM.service.ProductRecord;
+import com.java.TCVM.data.ProductRecord;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductRecordTest {

@@ -1,9 +1,7 @@
-package com.java.TCVM.service;
+package com.java.TCVM.data;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.java.TCVM.data.Product;
 
 public class ProductRecord { 
 

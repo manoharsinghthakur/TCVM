@@ -5,10 +5,10 @@ import java.io.IOException;
 import com.java.TCVM.controller.ContainerInitializer;
 import com.java.TCVM.data.Container;
 import com.java.TCVM.data.Product;
+import com.java.TCVM.data.ProductRecord;
+import com.java.TCVM.data.WasteProductRecord;
 import com.java.TCVM.service.DrinkAvailability;
 import com.java.TCVM.service.MakeDrink;
-import com.java.TCVM.service.ProductRecord;
-import com.java.TCVM.service.WasteProductRecord;
 
 public class MakeBlackTea implements MakeDrink {
 

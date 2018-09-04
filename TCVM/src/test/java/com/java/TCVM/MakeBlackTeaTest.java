@@ -13,8 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.java.TCVM.controller.ContainerInitializer;
 import com.java.TCVM.data.Container;
-import com.java.TCVM.service.ProductRecord;
-import com.java.TCVM.service.WasteProductRecord;
+import com.java.TCVM.data.ProductRecord;
+import com.java.TCVM.data.WasteProductRecord;
 import com.java.TCVM.service.makeImpl.MakeBlackTea;
 
 @RunWith(MockitoJUnitRunner.class)

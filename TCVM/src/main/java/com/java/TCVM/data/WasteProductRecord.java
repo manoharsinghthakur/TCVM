@@ -1,9 +1,7 @@
-package com.java.TCVM.service;
+package com.java.TCVM.data;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.java.TCVM.data.Container;
 
 public class WasteProductRecord {
 	 List<Container> wasteProductList = new ArrayList();
