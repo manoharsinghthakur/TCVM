@@ -1,21 +1,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.java</groupId>
-  <artifactId>TCVM</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>com.java</groupId>
+	<artifactId>TCVM</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>TCVM</name>
-  <url>http://maven.apache.org</url>
+	<name>TCVM</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<sonar.login>admin</sonar.login>
+		<sonar.password>admin</sonar.password>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<!-- <sonar.exclusions>/src/main/webapp/core/js/lib/*.js</sonar.exclusions> 
+			<sonar.issue.ignore.multicriteria>S104</sonar.issue.ignore.multicriteria> 
+			<sonar.issue.ignore.multicriteria.S104.resourceKey>/src/main/webapp/core/js/**/*</sonar.issue.ignore.multicriteria.S104.resourceKey> 
+			<sonar.issue.ignore.multicriteria.S104.ruleKey>javascript:S104</sonar.issue.ignore.multicriteria.S104.ruleKey> -->
 
-  <dependencies>
-    <dependency>
+		<!-- Excluded the Duplicate Block Rule from following packages -->
+		<!-- <sonar.cpd.exclusions>/src/main/java/com/deere/scard/dao/query/*.java,/src/main/java/com/deere/scard/domain/*.java,/src/main/java/com/deere/scard/form/*.java</sonar.cpd.exclusions> -->
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.sources>src/main/java</sonar.sources>
+		<sonar.tests>src/test/java</sonar.tests>
+
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+
+	</properties>
+
+	<dependencies>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
@@ -34,5 +53,42 @@
 			<version>1.3</version>
 			<scope>test</scope>
 		</dependency>
-  </dependencies>
+	</dependencies>
+	<build>
+		<plugins>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
+				<configuration> <includes> <include>${runSuite}</include> </includes> </configuration> 
+				</plugin> -->
+
+			<!-- Sonar-JaCoCo integration plugin -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.7.201606060606</version>
+				<configuration>
+					<destFile>${sonar.jacoco.reportPath}</destFile>
+					<append>true</append>
+				</configuration>
+				<executions>
+					<execution>
+						<id>agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>   
+				</executions>
+			</plugin>
+
+			<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.3.0.603</version>
+			</plugin>
+
+
+		</plugins>
+		<finalName>TCVM</finalName>
+	</build>
+
 </project>

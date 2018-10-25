@@ -1,5 +1,12 @@
 package com.java.TCVM;
 
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,14 +17,15 @@ import com.java.TCVM.controller.InputScanner;
 public class InputScannerTest {
 
 	@Test
-	public void shouldReturnInteger() {
-		/*Scanner mockScanner = mock(Scanner.class);
-		
-		when(mockScanner.nextInt()).thenReturn(5);
-		*/
+	public void getInputInteger() {
+		String input = "5";
+		InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
+
 		InputScanner inputScanner = new InputScanner();
-		//inputScanner.nextInt();
-		//Assert.assertEquals(5, inputScanner.nextInt());
+		Integer s = inputScanner.nextInt();
+
+		assertEquals(new Integer(5), s);
 	}
 
 }
